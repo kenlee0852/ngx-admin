@@ -1,6 +1,4 @@
-import {Component, OnDestroy} from '@angular/core';
-import { NbThemeService } from '@nebular/theme';
-import { takeWhile } from 'rxjs/operators/takeWhile' ;
+import {Component, OnInit} from '@angular/core';
 
 interface CardSettings {
   title: string;
@@ -11,77 +9,47 @@ interface CardSettings {
 @Component({
   selector: 'ngx-dashboard',
   templateUrl: './dashboard.component.html',
+  styleUrls: ['dashboard.css']
 })
-export class DashboardComponent implements OnDestroy {
+export class DashboardComponent implements OnInit {
 
-  private alive = true;
+  contests: any[];
+  constructor() {
+    };
 
-  lightCard: CardSettings = {
-    title: 'Light',
-    iconClass: 'nb-lightbulb',
-    type: 'primary',
-  };
-  rollerShadesCard: CardSettings = {
-    title: 'Roller Shades',
-    iconClass: 'nb-roller-shades',
-    type: 'success',
-  };
-  wirelessAudioCard: CardSettings = {
-    title: 'Wireless Audio',
-    iconClass: 'nb-audio',
-    type: 'info',
-  };
-  coffeeMakerCard: CardSettings = {
-    title: 'Coffee Maker',
-    iconClass: 'nb-coffee-maker',
-    type: 'warning',
-  };
-
-  statusCards: string;
-
-  commonStatusCardsSet: CardSettings[] = [
-    this.lightCard,
-    this.rollerShadesCard,
-    this.wirelessAudioCard,
-    this.coffeeMakerCard,
-  ];
-
-  statusCardsByThemes: {
-    default: CardSettings[];
-    cosmic: CardSettings[];
-    corporate: CardSettings[];
-  } = {
-    default: this.commonStatusCardsSet,
-    cosmic: this.commonStatusCardsSet,
-    corporate: [
+  ngOnInit(){
+    this.contests = 
+    [
       {
-        ...this.lightCard,
-        type: 'warning',
+        title: '我要減肥',
+        point: 500,
+        left: 3,
+        dueDate: '10.31.18'
       },
       {
-        ...this.rollerShadesCard,
-        type: 'primary',
+        title: '我要減肥2',
+        point: 500,
+        left: 3,
+        dueDate: '10.31.18'
       },
       {
-        ...this.wirelessAudioCard,
-        type: 'danger',
+        title: '我要減肥3',
+        point: 500,
+        left: 3,
+        dueDate: '10.31.18'
       },
       {
-        ...this.coffeeMakerCard,
-        type: 'secondary',
+        title: '我要減肥4',
+        point: 500,
+        left: 3,
+        dueDate: '10.31.18'
       },
-    ],
-  };
-
-  constructor(private themeService: NbThemeService) {
-    this.themeService.getJsTheme()
-      .pipe(takeWhile(() => this.alive))
-      .subscribe(theme => {
-        this.statusCards = this.statusCardsByThemes[theme.name];
-    });
-  }
-
-  ngOnDestroy() {
-    this.alive = false;
+      {
+        title: '我要減肥5',
+        point: 500,
+        left: 3,
+        dueDate: '10.31.18'
+      },
+    ]
   }
 }

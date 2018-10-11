@@ -1,0 +1,22 @@
+img.contest-profile{
+    display: block;
+    width: 100%;
+}
+nb-card-header.contest-container{
+    padding: 0.75em;
+}
+.center{
+    text-align: center;
+}
+div.small-des{
+    margin-top: 6px;
+}
+button.btn.rec{
+    border-radius: 0;
+}
+nb-card{
+    max-width: 250px;
+}
+h4.contest-title{
+    padding-top: 0.75em;
+}
